@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "muse-ai",
-    "slug": "muse-ai",
+    "name": "momento-ai",
+    "slug": "momento-ai",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "muse-ai",
+    "scheme": "momento-ai",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
