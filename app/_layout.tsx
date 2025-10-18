@@ -10,9 +10,14 @@ import { ModalProvider } from "contexts/ModalContext";
 import { useFonts } from "expo-font";
 import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
-import { useColorScheme } from "react-native";
+import { Platform, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import "../tamagui-web.css";
+import { TamaguiProvider } from "tamagui";
+import tamaguiConfig from "tamagui.config";
+
+if (Platform.OS === "web") {
+  require("../tamagui-web.css");
+}
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -61,13 +66,15 @@ function RootLayoutNav() {
   return (
     <SafeAreaProvider>
       <ClerkProvider tokenCache={tokenCache}>
-        <ModalProvider>
-          <ThemeProvider
-            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-          >
-            <Slot /> {/* Just a page */}
-          </ThemeProvider>
-        </ModalProvider>
+        <TamaguiProvider config={tamaguiConfig}>
+          <ModalProvider>
+            <ThemeProvider
+              value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+            >
+              <Slot />
+            </ThemeProvider>
+          </ModalProvider>
+        </TamaguiProvider>
       </ClerkProvider>
     </SafeAreaProvider>
   );

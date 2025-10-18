@@ -134,9 +134,9 @@ export default function Page() {
 
               <Button
                 size="$4"
-                bg="#904BFF"
+                bg="$red9"
                 color="white"
-                borderColor="#904BFF"
+                borderColor="$red9"
                 onPress={onSignInPress}
                 disabled={!isLoaded || isLoading}
                 opacity={!isLoaded || isLoading ? 0.5 : 1}

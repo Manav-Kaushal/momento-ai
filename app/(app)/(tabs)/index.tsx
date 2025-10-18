@@ -1,6 +1,7 @@
-import { ExternalLink } from '@tamagui/lucide-icons'
-import { Anchor, H2, Paragraph, XStack, YStack } from 'tamagui'
-import { ToastControl } from 'components/CurrentToast'
+import { ExternalLink } from "@tamagui/lucide-icons";
+import { ToastControl } from "components/CurrentToast";
+import { SignOutButton } from "components/SignOutButton";
+import { Anchor, H2, Paragraph, XStack, YStack } from "tamagui";
 
 export default function TabOneScreen() {
   return (
@@ -24,7 +25,7 @@ export default function TabOneScreen() {
         </Paragraph>
 
         <Paragraph fontSize="$5">to root and follow the</Paragraph>
-
+        <SignOutButton />
         <XStack
           items="center"
           gap="$1.5"
@@ -32,8 +33,8 @@ export default function TabOneScreen() {
           py="$1"
           rounded="$3"
           bg="$green5"
-          hoverStyle={{ bg: '$green6' }}
-          pressStyle={{ bg: '$green4' }}
+          hoverStyle={{ bg: "$green6" }}
+          pressStyle={{ bg: "$green4" }}
         >
           <Anchor
             href="https://tamagui.dev/docs/core/configuration"
@@ -51,5 +52,5 @@ export default function TabOneScreen() {
         </Paragraph>
       </XStack>
     </YStack>
-  )
+  );
 }
