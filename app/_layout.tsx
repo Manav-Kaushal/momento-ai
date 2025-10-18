@@ -6,13 +6,12 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { Provider } from "components/Provider";
+import { ModalProvider } from "contexts/ModalContext";
 import { useFonts } from "expo-font";
-import { SplashScreen, Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+import { Slot, SplashScreen } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { useTheme } from "tamagui";
 import "../tamagui-web.css";
 
 export {
@@ -58,38 +57,17 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
-  const theme = useTheme();
 
   return (
     <SafeAreaProvider>
       <ClerkProvider tokenCache={tokenCache}>
-        <ThemeProvider
-          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-        >
-          <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-          <Stack>
-            <Stack.Screen
-              name="(tabs)"
-              options={{
-                headerShown: false,
-              }}
-            />
-
-            <Stack.Screen
-              name="modal"
-              options={{
-                title: "Tamagui + Expo",
-                presentation: "modal",
-                animation: "slide_from_right",
-                gestureEnabled: true,
-                gestureDirection: "horizontal",
-                contentStyle: {
-                  backgroundColor: theme.background.val,
-                },
-              }}
-            />
-          </Stack>
-        </ThemeProvider>
+        <ModalProvider>
+          <ThemeProvider
+            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+          >
+            <Slot /> {/* Just a page */}
+          </ThemeProvider>
+        </ModalProvider>
       </ClerkProvider>
     </SafeAreaProvider>
   );
